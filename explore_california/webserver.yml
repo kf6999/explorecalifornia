@@ -1,0 +1,9 @@
+- name: Web Server
+  hosts: all
+  tasks:
+    - package: "name=httpd state=present"
+    - git:
+       repo: https://kgcoe-git.rit.edu/nssa-320-group21/lab01.git
+       dest: /var/www/html
+    - copy: "src=index.html dest=/var/www/html"
+    - service: "name=httpd state=started"
